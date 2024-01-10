@@ -2,9 +2,11 @@
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { useModalStore } from '../stores/modal'
 import { useBebidaStore } from '@/stores/bebidas'
+import { useFavoritoStore } from '@/stores/favoritos'
 
 const modalStore = useModalStore()
 const bebidaStore = useBebidaStore()
+const favoritoStore = useFavoritoStore()
 </script>
 
 <template>
@@ -45,7 +47,7 @@ const bebidaStore = useBebidaStore()
               </div>
               <div class="mt-5 sm:mt-6 flex justify-between gap-4">
                 <button @click="modalStore.cambiarEstadoModal" type="button" class="w-full rounded bg-gray-600 p-3 font-bold uppercase text-white shadow hover:bg-gray-500">Cerrar</button>
-                <button type="button" class="w-full rounded bg-orange-600 p-3 font-bold uppercase text-white shadow hover:bg-gray-500">Agregar a Favoritos</button>
+                <button @click="favoritoStore.agregarFavorito" type="button" class="w-full rounded bg-orange-600 p-3 font-bold uppercase text-white shadow hover:bg-gray-500">{{ favoritoStore.existeFavorito ? 'Eliminar Favorito' : 'Agregar Favorito' }}</button>
               </div>
             </DialogPanel>
           </TransitionChild>
