@@ -1,7 +1,9 @@
 <script setup>
   import { RouterLink, useRoute } from 'vue-router'
   import { computed } from 'vue'
+  import { useBebidaStore } from '../stores/bebidas'
   
+  const bebidaStore = useBebidaStore()
   const route = useRoute()
   const paginaInicio = computed(() => {
     return route.name === 'inicio'
@@ -40,6 +42,7 @@
           </label>
           <select id="categoria" class="p-3 w-full rounded-lg focus:outline-none">
             <option value="">--Seleccione--</option>
+            <option v-for="categoria in bebidaStore.categorias" :value="categoria.nombreCategoria">{{ categoria.nombreCategoria }}</option>
           </select>
         </div>
 
