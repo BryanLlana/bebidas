@@ -1,10 +1,14 @@
 <script setup>
+  import { useBebidaStore } from '../stores/bebidas'
+
   defineProps({
     receta: {
       type: Object,
       required: true
     }
   })
+
+  const bebidaStore = useBebidaStore()
 </script>
 
 <template>
@@ -16,7 +20,7 @@
       <h2 class="text-center font-bold text-2xl mb-3">{{ receta.nombre }}</h2>
 
       <div>
-        <button class="py-2 px-3 bg-orange-700 hover:bg-orange-600 transition-all text-white font-bold uppercase rounded-lg w-full">Ver Receta</button>
+        <button @click="bebidaStore.seleccionarReceta(receta.id)" class="py-2 px-3 bg-orange-700 hover:bg-orange-600 transition-all text-white font-bold uppercase rounded-lg w-full">Ver Receta</button>
       </div>
     </div>
   </div>

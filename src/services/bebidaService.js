@@ -6,6 +6,9 @@ const bebidaService = {
   },
   obtenerRecetas: (ingrediente, categoria) => {
     return api.get(`/filter.php?c=${categoria}&i=${ingrediente}`)
+  },
+  obtenerReceta: id => {
+    return api.get(`/lookup.php?i=${id}`)
   }
 }
 
